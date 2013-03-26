@@ -1,3 +1,4 @@
+#add some comments here...
 def mode(array)
 
 if array.empty?
