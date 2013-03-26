@@ -1,4 +1,10 @@
 #add some comments here...
+#I think a good solution is to sort the array
+#and then split it by elements
+#and then compare arrays by size. biggest wins. Ties result in ties.
+#return the value at array[0]
+#done.
+
 def mode(array)
 
 if array.empty?
