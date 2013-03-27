@@ -29,3 +29,5 @@ end # end def mode(array)
 arr1 = [1, 5, 3, 4, 5, 1]
 
 mode(arr1)
+
+  
