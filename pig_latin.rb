@@ -18,7 +18,7 @@ def translate(str)
 
     a.each do |string|
 
-      if string =~ /\A[b-df-hj-np-tv-z]{2}/ # check for two leading consonants
+      if string =~ /\A[b-df-hj-np-tuv-z]{2}/ # check for two leading consonants
         string.concat(string[0] + string[1] + "ay")
         translated_str = string.reverse.byteslice(0..-3)
         temp << translated_str.reverse
@@ -44,7 +44,14 @@ def translate(str)
   elsif str =~ /\A[aeiou]/ # word leads with a vowel
     str.concat("ay")
 
-  elsif str =~ /\A[b-df-hj-np-tv-z]{2}/ # word leads with two consonants
+
+ elsif str =~ /\A[b-df-hj-np-tuv-z]{3}/ # word leads with three consonants
+    str.concat(str[0] + str[1] + str[2] + "ay")
+    trans_str = str.reverse.byteslice(0..-4)
+    trans_str.reverse 
+
+
+  elsif str =~ /\A[b-df-hj-np-tuv-z]{2}/ # word leads with two consonants
     str.concat(str[0] + str[1] + "ay")
     trans_str = str.reverse.byteslice(0..-3)
     trans_str.reverse 
