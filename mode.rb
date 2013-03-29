@@ -1,31 +1,32 @@
 def mode(array)
-  if array.empty?
-    return 0
-  end
-  current_number = array[0]
-  next_number = 0
-  current_sum = 0
-  next_sum = 0
+  i = 0
+  count = 0
+  mode_count = 0
+  mode_array = []
   
-  array.each do |element|
-    array.each do |i|
-      if element == array[i-1]
-        next_sum += 1
-      end
+  while i < array.size
+    array.each do | element |
+        if element == array[i]
+          count += 1
+        end
+      
     end
-  
-    if(next_sum > current_sum)
-      current_sum = next_sum
-      current_number = next_number
+    if count > mode_count
+      mode_array.clear
+      mode_array << array[i]
+      mode_count = count   
+    end
+    if count == mode_count
+      mode_array << array[i]
     end
 
+    i += 1
+
+    count = 0
   end
-  current_number
+
+  p mode_array.uniq
 end
 
-
-array1 = []
-my_array = [1, 2, 1, 3]
-
-puts mode(array1)
-puts mode(my_array)
+a = [1, 3, 3, 4, 4, 5, 6]
+mode(a)
