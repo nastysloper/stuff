@@ -1,18 +1,20 @@
 def times_table(rows)
-  if rows == 0
-    return
-  end
 
-  a = [rows][rows]
-  i = 0
+  i = 1
+  j = 1
 
-  while i < rows
-    a.each do |j|
-      p a[i][j]
-    end
+  while i <= rows
+    #print i
+    while j <= rows
+      print (j * i).to_s + " "
+      j += 1
+    end # end while
     i += 1
-  end
+    j = 1
+    puts "\n"
 
-end
+  end # end while
 
-times_table(1)
+end # end def
+
+times_table(5)
