@@ -1,14 +1,48 @@
 class RPNCalculator
+
   def evaluate(arg)
-    return arg.to_i
+    arr = arg.split
+    length = arr.size
+
+    while length >= 3
+      op = arr.index {|x| x =~ /[+-]/}
+      operator = op
+      num1 = op - 1
+      num2 = op - 2
+      if arr[op] =~ /[+]/
+        arr[0] << addition(arr, num1, num2)
+      elsif arr[op] =~ /[-]/
+        arr[0] << subtract(arr, num1, num2)
+      elsif arr[op] =~ /[*]/
+        arr[0] << multiply(arr, num1, num2)
+      end # end if
+      length -= 3
+    end # end while
+
+    if(arr.size == 1)
+      return arg.to_i
+    end
+
+  end # end evaluate
+
+
+  def multiply(arr, num1, num2)
+    arr[num1].to_i * arr[num2].to_i
   end
-  def addition(str)
-    arr = str.split
-    p arr
-    arr[0].to_i + arr[2].to_i + arr[1].to_i
+
+
+  def addition(arr, num1, num2)
+    arr[num1].to_i + arr[num2].to_i
   end
-end
+
+  def subtract(arr, num1, num2)
+    arr[num1].to_i - arr[num2].to_i
+  end
+
+end # end class RPNcalculator
 
 
 calc = RPNCalculator.new
-p calc.addition("2 2 +")
+p calc.evaluate("7 2 +")
+p calc.evaluate("5 1 -")
+p calc.evaluate("1 2 + 3 4 +")
