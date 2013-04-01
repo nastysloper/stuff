@@ -8,8 +8,10 @@ class GuessingGame
       @solved = true
       return :correct
     elsif number > @answer
+      @solved = false
       return :high
     elsif number < @answer
+      @solved = false
       return :low
     end
   end
@@ -18,5 +20,4 @@ class GuessingGame
     return @solved
   end
   
-  # Make sure you define the other required methods, too
 end
